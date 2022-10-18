@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 main {
     height: 100vh;
     display: flex;
@@ -32,7 +36,7 @@ main {
     gap: 12px;
 }
 
-.register-form button{
+.register-form button {
     width: 100%;
 }
 
@@ -44,10 +48,10 @@ main {
     gap: 24px;
 }
 
-.register-title h2:nth-child(2){
+.register-title h2:nth-child(2) {
     color: var(--brand1)
 }
 
-.register-title p{
+.register-title p {
     color: var(--gray3)
 }

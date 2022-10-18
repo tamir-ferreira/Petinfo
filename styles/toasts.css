@@ -1,0 +1,44 @@
+.tooltips{
+    padding: 21px 32px;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    position: absolute;
+    right: 16px;
+    bottom: 28px;
+    gap: 17px;
+    border-radius: var(--radius-1);
+    background-color: var(--gray9);
+    box-shadow: 0px 4px 30px -12px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.success{
+    animation: toast 0.8s ease;
+    display: flex;
+}
+
+.tooltips div{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.tooltips p{
+    width: 377px;
+    line-height: 150%;
+    color: var(--gray2);
+}
+
+.tooltips p a{
+    color: var(--brand1);
+}
+
+@keyframes toast {
+    0%{
+        transform: translateX(450px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}

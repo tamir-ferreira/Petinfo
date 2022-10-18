@@ -40,6 +40,7 @@
 
 body{
 color: var(--gray1);
+background-color: var(--gray8);
 }
 
 .font1-600 {
