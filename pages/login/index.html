@@ -1,17 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../styles/globalStyles.css">
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../../styles/inputs.css">
     <link rel="stylesheet" href="./index.css">
     <script defer type="module" src="index.js"></script>
     <title>Petinfo - Login</title>
 </head>
+
 <body>
-    <main>
-        
+    <main class="container">
+        <section class="login-title">
+            <h2 class="font1-600">Petinfo</h2>
+            <h2 class="font1-600"><span>Amor</span> e <span>carinho</span> por meio do conhecimento</h2>
+            <div>
+                <p class="font4-400">Todas as informações para melhorar a vida do seu pet em um só lugar</p>
+                <img src="../images/img-login.png" alt="imagens de animais de estimação">
+            </div>
+        </section>
+        <section class="login-form">
+            <h3 class="font3-500">Login</h3>
+            <form action="">
+                <div>
+                    <label class="font4-500" for="user">Usuário</label>
+                    <input class="font4-400" type="text" id="user" placeholder="Digite seu usuário aqui">
+                </div>
+                <div class="">
+                    <label class="font4-500" for="password">Senha</label>
+                    <input class="font4-400" type="password" id="password" placeholder="Digite sua senha aqui">
+                    <span hidden class="font5-400 alert-form">A senha não confere</span>
+                </div>
+                <button class="btn-brand">Acessar</button>
+                <div>
+                    <p class="font5-500">Ainda não possui conta?</p>
+                    <p class="font5-400">Clicando no botão abaixo, você pode se cadastrar rapidamente</p>
+                </div>
+            </form>
+            <a href="../register/index.html">
+                <button class="btn-clean">Cadastrar</button>
+            </a>
+        </section>
+
     </main>
 </body>
+
 </html>

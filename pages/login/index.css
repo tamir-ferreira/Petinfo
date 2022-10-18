@@ -1,1 +1,70 @@
-/* Desenvolva a estilização da sua página aqui */
+main {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login-title {
+    width: 391px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.login-title span {
+    color: var(--brand1);
+}
+
+.login-title div {
+    width: 320px;
+}
+
+.login-title div p {
+    color: var(--gray3);
+    margin-bottom: 24px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    background-color: var(--gray9);
+    width: 368px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-1);
+    padding: 44px 24px;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.login-form div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login-form p:nth-child(2) {
+    color: var(--gray3)
+}
+
+.login-form div:nth-child(4) {
+    text-align: center;
+}
+
+.login-form button{
+    width: 100%;
+}
+
+.alert-form input {
+    border: 1px solid var(--alert1);
+}
+
+.alert-form span {
+    color: var(--alert1);
+}

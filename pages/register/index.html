@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../styles/globalStyles.css">
     <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../../styles/inputs.css">
     <link rel="stylesheet" href="./index.css">
     <script defer type="module" src="index.js"></script>
     <title>Petinfo - Registro</title>
 </head>
+
 <body>
     <main class="container">
         <section class="register-form">
             <header>
                 <h3 class="font3-500">Cadastro</h3>
-                <button class="btn-clean-small">Voltar para o login</button>
+                <a href="../login/index.html">
+                    <button class="btn-clean-small">Voltar para o login</button>
+                </a>
             </header>
             <form action="">
                 <div>
@@ -33,19 +38,21 @@
                 <div class="">
                     <label class="font4-500" for="password">Senha</label>
                     <input class="font4-400" type="password" id="password" placeholder="Digite sua senha aqui">
-                    <span hidden class="font5-400 alert-form">A senha não confere</span>
                 </div>
                 <button class="btn-brand">Cadastrar</button>
-                <button class="btn-clean">Voltar para o login</button>
             </form>
+            <a href="../login/index.html">
+                <button class="btn-clean">Voltar para o login</button>
+            </a>
         </section>
 
         <section class="register-title">
             <h2 class="font1-600">Petinfo</h2>
             <h2 class="font1-600">Ooooooba!</h2>
             <p class="font4-400">Agora vamos poder contribuir para o bem estar do seu pet por meio do conhecimento</p>
-            <img src="./images/img-register.png" alt="imagens de animais de estimação">
+            <img src="../images/img-register.png" alt="imagens de animais de estimação">
         </section>
     </main>
 </body>
+
 </html>

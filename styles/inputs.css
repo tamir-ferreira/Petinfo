@@ -1,0 +1,19 @@
+input {
+    height: 44px;
+    padding: 0 16px;
+    background-color: var(--gray8);
+    border: 1px solid var(--gray6);
+    border-radius: var(--radius-1);
+    outline: none;
+}
+
+input::placeholder {
+    color: var(--gray4);
+}
+
+input:focus {
+    background-color: var(--gray9);
+    border: 1px solid var(--gray1);
+    border-radius: var(--radius-1);
+    outline: none;
+}
