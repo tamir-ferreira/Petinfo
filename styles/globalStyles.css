@@ -1,26 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 :root {
-  --brand100: "hsl(230, 57%, 50%)";
-  --brand200: "hsl(230, 68%, 54%)";
-  --gray100: "hsl(210, 11%, 15%)";
-  --gray200: "hsl(210, 10%, 23%)";
-  --gray300: "hsl(210, 9%, 31%)";
-  --gray400: "hsl(210, 7%, 56%)";
-  --gray500: "hsl(210, 11%, 71%)";
-  --gray600: "hsl(210, 16%, 93%)";
-  --gray700: "hsl(210, 17%, 95%)";
-  --gray800: "hsl(210, 17%, 98%)";
-  --gray900: "hsl(200, 100%, 99%)";
-  --alert100: "hsl(349, 57%, 50%)";
-  --alert200: "hsl(349, 69%, 55%)";
-  --sucess100: "hsl(162, 88%, 26%)";
+  --brand1: #364FC7;
+  --brand2: #3B56D9;
+  --gray1: #212529;
+  --gray2: #343A40;
+  --gray3: #495057;
+  --gray4: #868E96;
+  --gray5: #ADB5BD;
+  --gray6: #E9ECEF;
+  --gray7: #F1F3F5;
+  --gray8: #F8F9FA;
+  --gray9: #FCFEFF;
+  --alert1: #C73650;
+  --alert2: #DB3C58;
+  --sucess1: #087F5B;
+  --border: #D9D9D9;
+
+  --size-font1: 32px;
+  --size-font2: 24px;
+  --size-font3: 20px;
+  --size-font4: 16px;
+  --size-font5: 14px;
+
+  --weight-1: 600;
+  --weight-2: 500;
+  --weight-3: 400;
+
+  --radius-1: 4px;
+
 }
 
-body {
-  font-family: "Inter, sans-serif";
+body{
+color: var(--gray1);
+}
+
+.font1-600 {
+  font-size: var(--size-font1);
+  font-weight: var(--weight-1);
+}
+
+.font2-500 {
+  font-size: var(--size-font2);
+  font-weight: var(--weight-2);
+}
+
+.font2-600 {
+  font-size: var(--size-font2);
+  font-weight: var(--weight-1);
+}
+
+.font3-500 {
+  font-size: var(--size-font3);
+  font-weight: var(--weight-2);
+}
+
+.font4-400 {
+  font-size: var(--size-font4);
+  font-weight: var(--weight-3);
+}
+
+.font4-500 {
+  font-size: var(--size-font4);
+  font-weight: var(--weight-2);
+}
+
+.font4-500-under {
+  font-size: var(--size-font4);
+  font-weight: var(--weight-2);
+  text-decoration: underline;
+}
+
+.font5-400 {
+  font-size: var(--size-font5);
+  font-weight: var(--weight-3);
+}
+
+.font5-500 {
+  font-size: var(--size-font5);
+  font-weight: var(--weight-2);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
 }

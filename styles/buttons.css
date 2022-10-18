@@ -1,0 +1,80 @@
+button {
+    cursor: pointer;
+    font-size: var(--size-font4);
+    font-weight: var(--weight-2);
+    border-radius: var(--radius-1);
+    height: 38px;
+    padding: 0 16px;
+}
+
+.btn-brand {
+    background-color: var(--brand1);
+    border: 1px solid var(--brand1);
+    color: var(--gray9);
+}
+
+.btn-brand:hover {
+    background-color: var(--brand2);
+    border: 1px solid var(--brand2);
+}
+
+.btn-gray {
+    background-color: var(--gray6);
+    border: 1px solid var(--gray6);
+    color: var(--gray4);
+}
+
+.btn-gray:hover {
+    background-color: var(--gray6);
+    border: 1px solid var(--gray6);
+    color: var(--gray3);
+}
+
+.btn-alert {
+    background-color: var(--alert-1);
+    border: 1px solid var(--alert-1);
+    color: var(--gray9);
+}
+
+.btn-alert:hover {
+    background-color: var(--alert-2);
+    border: 1px solid var(--alert-2);
+}
+
+.btn-clean {
+    background: none;
+    border: 1px solid var(--gray6);
+    color: var(--gray1);
+}
+
+.btn-clean:hover {
+    background-color: var(--gray8);
+    border: 1px solid var(--gray6);
+}
+
+.btn-gray-small {
+    height: 32px;
+    padding: 0 8px;
+    background-color: var(--gray7);
+    border: 1px solid var(--gray7);
+    color: var(--gray4);
+}
+
+.btn-gray-small:hover {
+    background-color: var(--gray6);
+    border: 1px solid var(--gray6);
+    color: var(--gray3);
+}
+
+.btn-clean-small {
+    height: 32px;
+    padding: 0 8px;
+    background: none;
+    border: 1px solid var(--gray6);
+    color: var(--gray1);
+}
+
+.btn-clean-small:hover {
+    background-color: var(--gray8);
+    border: 1px solid var(--gray6);
+}

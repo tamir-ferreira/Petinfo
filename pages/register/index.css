@@ -1,0 +1,77 @@
+main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    background-color: var(--gray9);
+    width: 369px;
+    border: 1px solid var(--border);
+    padding: 44px 24px;
+}
+
+.register-form header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.register-form div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.register-form input {
+    height: 44px;
+    padding: 0 16px;
+    background-color: var(--gray8);
+    border: 1px solid var(--gray6);
+    border-radius: var(--radius-1);
+    outline: none;
+}
+
+.register-form input::placeholder {
+    color: var(--gray4);
+}
+
+.register-form input:focus {
+    background-color: var(--gray9);
+    border: 1px solid var(--gray1);
+    border-radius: var(--radius-1);
+    outline: none;
+}
+
+.alert-form input {
+    border: 1px solid var(--alert1);
+}
+
+.alert-form span{
+    color: var(--alert1);
+}
+
+.register-title {
+    width: 320px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.register-title h2:nth-child(2){
+    color: var(--brand1)
+}
+
+.register-title p{
+    color: var(--gray3)
+}
