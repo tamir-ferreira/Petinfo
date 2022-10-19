@@ -23,6 +23,7 @@
   --alert2: #DB3C58;
   --sucess1: #087F5B;
   --border: #D9D9D9;
+  --opacity: #1E1E1E50;
 
   --size-font1: 32px;
   --size-font2: 24px;
@@ -35,6 +36,7 @@
   --weight-3: 400;
 
   --radius-1: 4px;
+  --radius-2: 8px;
 
 }
 
@@ -87,6 +89,11 @@ background-color: var(--gray8);
 .font5-500 {
   font-size: var(--size-font5);
   font-weight: var(--weight-2);
+}
+
+.font5-600 {
+  font-size: var(--size-font5);
+  font-weight: var(--weight-1);
 }
 
 .container {

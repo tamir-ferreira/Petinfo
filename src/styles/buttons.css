@@ -78,3 +78,8 @@ button {
     background-color: var(--gray8);
     border: 1px solid var(--gray6);
 }
+
+.btn-close{
+    width: 32px;
+    height: 32px;
+}
