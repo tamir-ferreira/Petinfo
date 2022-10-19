@@ -30,17 +30,6 @@ button {
     color: var(--gray3);
 }
 
-.btn-alert {
-    background-color: var(--alert-1);
-    border: 1px solid var(--alert-1);
-    color: var(--gray9);
-}
-
-.btn-alert:hover {
-    background-color: var(--alert-2);
-    border: 1px solid var(--alert-2);
-}
-
 .btn-clean {
     background: none;
     border: 1px solid var(--gray6);
@@ -77,6 +66,17 @@ button {
 .btn-clean-small:hover {
     background-color: var(--gray8);
     border: 1px solid var(--gray6);
+}
+
+.btn-alert {
+    background-color: var(--alert1);
+    border: 1px solid var(--alert1);
+    color: var(--gray9);
+}
+
+.btn-alert:hover {
+    background-color: var(--alert2);
+    border: 1px solid var(--alert2);
 }
 
 .btn-close{

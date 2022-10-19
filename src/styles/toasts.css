@@ -1,9 +1,9 @@
-.tooltips{
+.tooltips {
     padding: 21px 32px;
     display: flex;
     flex-direction: column;
     /* border: 1px solid red; */
-    position: absolute;
+    position: fixed;
     right: 16px;
     bottom: 28px;
     gap: 17px;
@@ -13,32 +13,39 @@
     display: none;
 }
 
-.success{
+.show-toast {
     animation: toast 0.8s ease;
     display: flex;
 }
 
-.tooltips div{
+.success {
+    animation: toast 0.8s ease;
+    display: flex;
+}
+
+.tooltips div {
     display: flex;
     gap: 12px;
     align-items: center;
+    color: var(--sucess1);
 }
 
-.tooltips p{
+.tooltips p {
     width: 377px;
     line-height: 150%;
     color: var(--gray2);
 }
 
-.tooltips p a{
+.tooltips p a {
     color: var(--brand1);
 }
 
 @keyframes toast {
-    0%{
+    0% {
         transform: translateX(450px);
     }
-    100%{
+
+    100% {
         transform: translateX(0);
     }
 }

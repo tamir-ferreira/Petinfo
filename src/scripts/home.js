@@ -1,9 +1,10 @@
-import { getLocalStorage} from "./localStorage.js.js"
+import { getLocalStorage} from "./localStorage.js"
 
 const verifyPermission = () =>{
-    const user = getLocalStorage()
-
-    if (user == '') {
-        window.location.replace('../login/index.html')
+    const token = getLocalStorage('user-token')
+    // console.log(token)
+    if (token == '' || token == null) {
+        window.location.replace('../../index.html')
     }
 }
+verifyPermission()
