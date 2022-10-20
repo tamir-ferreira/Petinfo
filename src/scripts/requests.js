@@ -66,9 +66,9 @@ export async function register(body) {
         if (request.ok) {
             const response = await request.json()
             toast.classList.add('show-toast')
-            /* setTimeout(() => {
-                window.location.replace("../index.html")
-            }, 4000) */
+            setTimeout(() => {
+                window.location.replace("../../index.html")
+            }, 5000)
             // console.log(request)
         } else {
             console.log("erro de cadastro")
