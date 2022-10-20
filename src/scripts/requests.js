@@ -20,10 +20,12 @@ export async function login(body) {
             window.location.replace("./src/pages/home.html")
         } else {
             console.log("erro de login")
+            return false
         }
 
     } catch (error) {
         console.error(error)
+        return false
     }
 }
 

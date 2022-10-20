@@ -33,9 +33,12 @@
                 <div class="">
                     <label class="font4-500" for="password">Senha</label>
                     <input class="font4-400" type="password" id="password" placeholder="Digite sua senha aqui">
-                    <span hidden class="font5-400 alert-form">A senha não confere</span>
+                    <span  id="span-alert" class="font5-400">A senha não confere</span>
                 </div>
-                <button id="btn-login" class="btn-brand">Acessar</button>
+                <button id="btn-login" class="btn-disabled">Acessar</button>
+                <button id="btn-spinner" class="btn-brand">
+                    <img src="./src/images/spinner.png" alt="carregando">
+                </button>
                 <div>
                     <p class="font5-500">Ainda não possui conta?</p>
                     <p class="font5-400">Clicando no botão abaixo, você pode se cadastrar rapidamente</p>

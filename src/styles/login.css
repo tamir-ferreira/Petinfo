@@ -57,14 +57,19 @@ main {
     text-align: center;
 }
 
-.login-form button{
+.login-form button {
     width: 100%;
 }
 
-.alert-form input {
+.alert-form {
     border: 1px solid var(--alert1);
 }
 
-.alert-form span {
+span {
+    display: none;
+}
+
+.alert-span {
     color: var(--alert1);
+    display: block;
 }

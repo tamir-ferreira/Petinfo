@@ -12,22 +12,19 @@ const eventRegister = () => {
             const verify = filtered.every(e => e.value != '')
             console.log(verify)
             if (verify) {
-                // btnRegister.onclick = "none";
                 btnRegister.removeAttribute('disabled')
-                btnRegister.classList.remove('btn-gray')
+                btnRegister.classList.remove('btn-disabled')
                 btnRegister.classList.add('btn-brand')
-                // formActivate()
             } else {
                 btnRegister.setAttribute('disabled', true)
                 btnRegister.classList.remove('btn-brand')
-                btnRegister.classList.add('btn-gray')
+                btnRegister.classList.add('btn-disabled')
             }
         }
     })
-    // btnRegister.setAttribute('disabled', false)
-    // function formActivate() {
+
     form.addEventListener("submit", async (event) => {
-        console.log('submit')
+        // console.log('submit')
         event.preventDefault()
 
         btnRegister.style.display = 'none';
@@ -41,7 +38,7 @@ const eventRegister = () => {
             }
 
         })
-        console.log(body)
+        // console.log(body)
         await register(body)
 
         elements.forEach(elem => {
@@ -49,13 +46,12 @@ const eventRegister = () => {
             if (elem.tagName == "INPUT" && elem.value != '') {
                 elem.value = ''
             }
-
         })
         btnRegister.style.display = 'block';
         btnSpinner.style.display = 'none';
         btnRegister.setAttribute('disabled', true)
         btnRegister.classList.remove('btn-brand')
-        btnRegister.classList.add('btn-gray')
+        btnRegister.classList.add('btn-disabled')
     })
     // }
 }

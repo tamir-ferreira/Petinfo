@@ -84,6 +84,16 @@ button {
     height: 32px;
 }
 
+.btn-disabled {
+    background-color: var(--gray6);
+    border: 1px solid var(--gray6);
+    color: var(--gray4);
+}
+
+.btn-disabled:hover {
+    cursor:not-allowed;
+}
+
 #btn-spinner{
     display: flex;
     align-items: center;
