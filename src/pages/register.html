@@ -34,13 +34,16 @@
                 </div>
                 <div>
                     <label class="font4-500" for="avatar">Link da foto de perfil</label>
-                    <input class="font4-400" type="text" id="avatar" placeholder="Insira o link aqui">
+                    <input required class="font4-400" type="text" id="avatar" placeholder="Insira o link aqui">
                 </div>
                 <div class="">
                     <label class="font4-500" for="password">Senha</label>
                     <input required class="font4-400" type="password" id="password" placeholder="Digite sua senha aqui">
                 </div>
-                <button class="btn-brand">Cadastrar</button>
+                <button id="btn-register" class="btn-gray">Cadastrar</button>
+                <button id="btn-spinner" class="btn-brand">
+                    <img src="../images/spinner.png" alt="carregando">
+                </button>
             </form>
             <a href="../../index.html">
                 <button class="btn-clean">Voltar para o login</button>

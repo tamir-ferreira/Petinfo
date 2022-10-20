@@ -83,3 +83,25 @@ button {
     width: 32px;
     height: 32px;
 }
+
+#btn-spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    animation: spinner 0.5 infinite;
+}
+
+#btn-spinner>img {
+    animation: spinner 0.4s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
