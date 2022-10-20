@@ -3,6 +3,11 @@ export function getLocalStorage() {
     return JSON.parse(token)
 }
 
+export function getUserStorage() {
+    const user = localStorage.getItem('user-profile')
+    return JSON.parse(user)
+}
+
 export function setLocalStorage(local, data) {
     console.log('storage')
     localStorage.setItem(local, JSON.stringify(data))
