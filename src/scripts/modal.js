@@ -1,13 +1,16 @@
-import { formatDate } from "./home.js"
+import { formatDate, insertNewPost } from "./home.js"
 
+const listModals = document.querySelector('.list-modals')
+// let btnClose
+
+/* ------------------ RENDERIZAR MODAL DE LEITURA DE POST --------------- */
 export function renderModalRead(post) {
-    const listModals = document.querySelector('.list-modals')
-    console.log(post)
+    // console.log(post)
     const formatedDate = formatDate(post.createdAt)
     listModals.innerHTML = ''
 
     listModals.insertAdjacentHTML('afterbegin',
-        `<article class="modal-read modal-container">
+        `<article class="modal-container">
             <div class="modal-rd">
                 <header>  
                     <div class="font5-500">
@@ -26,12 +29,43 @@ export function renderModalRead(post) {
         </article>
      `
     )
-    const modalContainer = document.querySelector('.modal-container')
+
     const btnClose = document.querySelector('.btn-close')
-    modalContainer.classList.remove('modal-read')
-    btnClose.onclick = (event) =>{
-        const modal = event.target.closest('article')
-        console.log(event.target.closest('article'))
-        modal.remove()        
-    }
+    btnClose.onclick = (event) => event.target.closest('article').remove()
 }
+
+/* ------------------ RENDERIZAR MODAL DE INCLUSÃO DE POST --------------- */
+export function renderModalCreate() {
+    listModals.innerHTML = ''
+
+    listModals.insertAdjacentHTML('afterbegin',
+        `<form class="modal-container">
+            <div class="modal">
+                <header>
+                    <h3 class="font3-500">Criando novo post</h3>
+                    <button type="button" class="btn-gray-small btn-close">x</button>
+                </header>
+                <div class="edit-title-container">
+                    <label class="font4-500" for="title">Título do post</label>
+                    <input required type="text" id="title" placeholder="Digite o título aqui...">
+                </div>
+                <div class="edit-content-container">
+                    <label class="font4-500" for="content">Conteúdo do post</label>
+                    <textarea required id="content" placeholder="Desenvolva o conteúdo do post aqui..."></textarea>
+                </div>
+                <div class="edit-buttons">
+                    <button type="button" id="btn-cancel" class="btn-gray">Cancelar</button>
+                    <button id="btn-insert" class="btn-brand">Publicar</button>
+                </div>
+            </div>
+        </form>
+     `
+    )
+
+    const btnClose = document.querySelector('.btn-close')
+    const btnCancel = document.querySelector('#btn-cancel')
+    btnClose.onclick = (event) => event.target.closest('form').remove()
+    btnCancel.onclick = (event) => event.target.closest('form').remove()
+
+    insertNewPost()
+} 

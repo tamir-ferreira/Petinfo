@@ -4,9 +4,20 @@
 
 .modal-create{
     display: none;
+    /* border: 1px solid red; */
 }
 .modal-delete{
     display: none;
+}
+
+.modal{
+display: flex;
+    flex-direction: column;
+    /* justify-content:flex-end; */
+    width: 800px;
+    background-color: var(--gray9);
+    border-radius: 8px;
+    padding: 30px 24px;
 }
 
 .modal header{

@@ -1,8 +1,9 @@
 import { login } from "./requests.js"
 const btnLogin = document.querySelector('#btn-login')
 const btnSpinner = document.querySelector('#btn-spinner')
+const inputEmail = document.querySelector('#email')
 const inputPassword = document.querySelector('#password')
-const spanPassword = document.querySelector('#span-alert')
+const spanAlert = document.querySelector('#span-alert')
 
 const eventLogin = () => {
     const form = document.querySelector("form")
@@ -22,6 +23,7 @@ const eventLogin = () => {
                 btnLogin.classList.remove('btn-brand')
                 btnLogin.classList.add('btn-disabled')
             }
+            spanAlert.classList.remove('alert-span')
         }
     })
 
@@ -33,32 +35,27 @@ const eventLogin = () => {
         const body = {}
 
         elements.forEach(elem => {
-            // console.log(elem.tagName)
             if (elem.tagName == "INPUT" && elem.value != '') {
                 body[elem.id] = elem.value
             }
         })
-        // console.log(body)
-        if (await login(body) == false) {
-            console.log('senha incorreta')
+
+        const response = await login(body)
+        console.log(response)
+        if (response.indexOf("incorret")) {
             btnLogin.style.display = 'block';
             btnSpinner.style.display = 'none';
+ 
             btnLogin.setAttribute('disabled', true)
             btnLogin.classList.remove('btn-brand')
             btnLogin.classList.add('btn-disabled')
-
-            inputPassword.classList.add('alert-form')
-            spanPassword.classList.add('alert-span')
             
+            spanAlert.classList.add('alert-span')
+            spanAlert.textContent = response;
+
+            if (response.indexOf("email")) inputEmail.classList.add('alert-form')
+            else inputPassword.classList.add('alert-form')
         }
-
-        /* elements.forEach(elem => {
-            // console.log(elem.tagName)
-            if (elem.tagName == "INPUT" && elem.value != '') {
-                elem.value = ''
-            }
-        }) */
-
     })
 }
 

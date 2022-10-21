@@ -1,5 +1,5 @@
 import { clearLocalStorage, getLocalStorage, getUserStorage } from "./localStorage.js"
-import { renderModalRead } from "./modal.js"
+import { renderModalCreate, renderModalRead } from "./modal.js"
 import { getPosts } from "./requests.js"
 
 const verifyPermission = () => {
@@ -31,26 +31,22 @@ function renderProfile(token) {
         `
     )
 
-    mapBtnProfile()
+    mapBtnsProfile()
     renderPosts(token, user.id)
 }
 
 
-
-/* --------------- MAPEAR BOTÕES PARA ACESSAR ÚLTIMOS USUÁRIOS -------------- */
-function mapBtnProfile() {
+/* --------------- MAPEAR BOTÕES DO PROFILE -------------- */
+function mapBtnsProfile() {
+    const btnCreatePost = document.getElementById('btn-create-post')
     const profile = document.querySelector("[alt='foto de perfil']")
     const containerLogin = document.querySelector('.container-login')
     const logout = document.getElementById('logout')
+    btnCreatePost.onclick = () => renderModalCreate()
 
-    profile.onclick = () => {
-        console.log('containerLogin')
-
-        containerLogin.classList.toggle('hidden-profile')
-    }
+    profile.onclick = () => containerLogin.classList.toggle('hidden-profile')
 
     logout.onclick = () => {
-
         clearLocalStorage();
         window.location.replace("../../index.html");
     }
@@ -114,14 +110,40 @@ function mapLinksModalRead(posts) {
         link.onclick = (event) => {
             event.preventDefault()
             const index = link.getAttribute('data-read-modal')
-            // console.log(index)
             const selectedPost = posts[index]
-            // console.log(selectedPost);
             renderModalRead(selectedPost)
         }
     })
 }
 
+/* ------------------ INSERIR NOVA POSTAGEM --------------- */
+export function insertNewPost() {
+    const form = document.querySelector('form')
+    const elements = [...form.elements]
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+        const body = {}
+
+        elements.forEach(elem => {
+            console.log(elem.tagName)
+            if (elem.tagName == "INPUT"||elem.tagName == "TEXTAREA") {
+                body[elem.id] = elem.value
+            }
+        })
+        console.log(body)
+        // await register(body)
+
+        elements.forEach(elem => {
+            // console.log(elem.tagName)
+            if (elem.tagName == "INPUT" && elem.value != '') {
+                elem.value = ''
+            }
+        })
+    })
+
+
+}
 
 /* ------------------ FORMATAR DATA ----------------- */
 export function formatDate(postCreatedAt) {
@@ -130,12 +152,13 @@ export function formatDate(postCreatedAt) {
     const option = {
         month: 'long',
         year: 'numeric',
-        
     }
     const dateStr = new Date(date).toLocaleDateString(locale, option)
     return dateStr[0].toUpperCase() + dateStr.slice(1).toLowerCase()
 }
 
+
+/*  */
 
 
 

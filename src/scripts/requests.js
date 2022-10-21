@@ -19,8 +19,9 @@ export async function login(body) {
             // console.log(response.token)
             window.location.replace("./src/pages/home.html")
         } else {
-            console.log("erro de login")
-            return false
+            const error = await request.json()
+            // console.log(error.message)
+            return error.message
         }
 
     } catch (error) {
