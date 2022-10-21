@@ -1,65 +1,193 @@
-import { getLocalStorage, getUserStorage } from "./localStorage.js"
+import { clearLocalStorage, getLocalStorage, getUserStorage } from "./localStorage.js"
+import { renderModalRead } from "./modal.js"
+import { getPosts } from "./requests.js"
 
 const verifyPermission = () => {
     const token = getLocalStorage('user-token')
-    // console.log(token)
     if (token == '' || token == null) {
         window.location.replace('../../index.html')
+    } else {
+        renderProfile(token)
     }
 }
 verifyPermission()
 
-const user = getUserStorage();
 
-
-/* --------------- CRIAR PROFILE DO USUÁRIO CONECTADO -------------- */
-function createUser(user) {
-    console.log(user)
+/* --------------- RENDERIZAR PROFILE DO USUÁRIO CONECTADO -------------- */
+function renderProfile(token) {
+    // console.log(user)
+    const user = getUserStorage();
     const userProfile = document.querySelector('.user-profile')
-    const {username, avatar} = user
+    const { username, avatar } = user
     userProfile.insertAdjacentHTML('afterbegin',
         `<img src="${avatar}" alt="foto de perfil">
          <div class="container-login hidden-profile">
             <span class="font4-500">${username}</span>
             <div>
                 <img src="../images/sign-out.svg" alt="">
-                <span class="font4-500">Sair da Conta</span>
+                <span id='logout' class="font4-500">Sair da Conta</span>
             </div>
          </div>
         `
     )
+
+    mapBtnProfile()
+    renderPosts(token, user.id)
 }
 
-createUser(user)
 
 
 /* --------------- MAPEAR BOTÕES PARA ACESSAR ÚLTIMOS USUÁRIOS -------------- */
-function mapBtnsUsers() {
+function mapBtnProfile() {
     const profile = document.querySelector("[alt='foto de perfil']")
     const containerLogin = document.querySelector('.container-login')
-    console.log(profile)
-    // users.forEach(user => {
-        // const btnUser = user.lastElementChild;
-        profile.onclick = () => {
-            console.log('containerLogin')
-        
-            containerLogin.classList.toggle('hidden-profile')
+    const logout = document.getElementById('logout')
+
+    profile.onclick = () => {
+        console.log('containerLogin')
+
+        containerLogin.classList.toggle('hidden-profile')
+    }
+
+    logout.onclick = () => {
+
+        clearLocalStorage();
+        window.location.replace("../../index.html");
+    }
+}
+
+
+/* --------------- RENDERIZAR POSTS CADASTRADOS -------------- */
+async function renderPosts(token, userId) {
+    // console.log(token)
+    const listFeed = document.querySelector('.list-feed')
+    const posts = await getPosts(token)
+    listFeed.innerHTML = ''
+    console.log(posts)
+    let count = 0
+
+    posts.forEach(post => {
+        const content = post.content.substr(0, 145) + '...'
+        const formatedDate = formatDate(post.createdAt)
+
+        let btnsPost = ''
+        if (post.user.id == userId) {
+            btnsPost = `<div>
+                            <button class="btn-clean-small">Editar</button>
+                            <button class="btn-gray-small">Excluir</button>
+                         </div>`
         }
-        // profile.onmouseout = () => containerLogin.style.display = 'none'
-    // });
 
-    const btnUsers = document.querySelectorAll(".btn-user")
-    btnUsers.forEach(btnUser => {
-        btnUser.onclick = () => {
-            const id = btnUser.id
+        listFeed.insertAdjacentHTML('beforeend',
+            `<li class="post" id="${post.id}">
+                <article>
+                    <header>
+                        <div class="font5-500">
+                            <img src="${post.user.avatar}" alt="foto de perfil">
+                            <h4 class="font5-500">${post.user.username}</h4>
+                            <span>|</span>
+                            <span>${formatedDate}</span>
+                        </div>
+                        ${btnsPost}
+                    </header>
+                    <div class="content">
+                        <h2>${post.title}</h2>
+                        <p>${content}</p>
+                        <a data-read-modal=${count} class="font4-500" href="">Acessar Publicação</a>
+                    </div>
+                </article>
+            </li>
+            `
+        )
+        count++
+    });
 
-            updateStorageSelected(lastUsers[id], "userGit")
-            updateStorageSelected(lastRepos[id], "repoGit")
-            updateStorageSelected(lastEmails[id], "emailGit")
+    mapLinksModalRead(posts)
+}
 
-            window.location.replace("../profile/index.html");
+
+/* ------------------ MAPEAR LINKS MODAL DE LEITURA ------------------ */
+function mapLinksModalRead(posts) {
+    const linksRead = document.querySelectorAll('[data-read-modal]')
+    console.log(linksRead)
+    linksRead.forEach(link => {
+        link.onclick = (event) => {
+            event.preventDefault()
+            const index = link.getAttribute('data-read-modal')
+            // console.log(index)
+            const selectedPost = posts[index]
+            // console.log(selectedPost);
+            renderModalRead(selectedPost)
         }
     })
 }
 
-mapBtnsUsers()
+
+/* ------------------ FORMATAR DATA ----------------- */
+export function formatDate(postCreatedAt) {
+    const date = new Date(postCreatedAt)
+    const locale = 'pt-br'
+    const option = {
+        month: 'long',
+        year: 'numeric',
+        
+    }
+    const dateStr = new Date(date).toLocaleDateString(locale, option)
+    return dateStr[0].toUpperCase() + dateStr.slice(1).toLowerCase()
+}
+
+
+
+
+
+
+/*                 <li class="post">
+                    <article>
+                        <header>
+                            <div class="font5-500">
+                                <img src="../images/Ellipse.png" alt="foto de perfil">
+                                <h4 class="font5-500">Samuel Leão</h4>
+                                <span>|</span>
+                                <span>Outubro de 2022</span>
+                            </div>
+                            <div>
+                                <button class="btn-clean-small">Editar</button>
+                                <button class="btn-gray-small">Excluir</button>
+                            </div>
+                        </header>
+                        <div class="content">
+                            <h2>Outubro Rosa: Detalhes sobre a importância da prevenção do câncer de mama em cadelas e
+                                gatas
+                            </h2>
+                            <p>Assim como em humanos, cadelas e gatas também podem desenvolver câncer de mama. Ainda
+                                hoje,
+                                para ambas as espécies, o câncer de mama tem maior...</p>
+                            <a class="font4-500" href="">Acessar Publicação</a>
+                        </div>
+                    </article>
+                </li>
+                <li class="post">
+                    <article>
+                        <header>
+                            <div class="font5-500">
+                                <img src="../images/Ellipse.png" alt="foto de perfil">
+                                <h4 class="font5-500">Samuel Leão</h4>
+                                <span>|</span>
+                                <span>Outubro de 2022</span>
+                            </div>
+                            <div>
+                                <button class="btn-clean-small">Editar</button>
+                                <button class="btn-gray-small">Excluir</button>
+                            </div>
+                        </header>
+                        <div class="content">
+                            <h2>Outubro Rosa: Detalhes sobre a importância da prevenção do câncer de mama em cadelas e
+                                gatas
+                            </h2>
+                            <p>Assim como em humanos, cadelas e gatas também podem desenvolver câncer de mama. Ainda
+                                hoje,
+                                para ambas as espécies, o câncer de mama tem maior...</p>
+                            <a class="font4-500" href="">Acessar Publicação</a>
+                        </div>
+                    </article>
+                </li> */

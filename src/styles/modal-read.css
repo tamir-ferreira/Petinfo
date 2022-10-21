@@ -12,7 +12,7 @@
     /* display: none; */
 }
 
-.modal{
+.modal-rd{
     display: flex;
     flex-direction: column;
     /* justify-content:flex-end; */
@@ -20,6 +20,12 @@
     background-color: var(--gray9);
     border-radius: 8px;
     padding: 30px 24px;
+}
+
+.modal-rd img{
+width: 32px;
+height: 32px;
+border-radius: var(--radius-3);
 }
 
 .modal-read{

@@ -12,7 +12,7 @@ const eventLogin = () => {
         e.onkeyup = () => {
             const filtered = elements.filter(e => e.tagName == "INPUT")
             const verify = filtered.every(e => e.value != '')
-            console.log(verify)
+            // console.log(verify)
             if (verify) {
                 btnLogin.removeAttribute('disabled')
                 btnLogin.classList.remove('btn-disabled')

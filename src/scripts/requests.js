@@ -36,7 +36,7 @@ async function getUser(token) {
             Authorization: 'Bearer ' + token
         }
     };
-    console.log(options)
+    // console.log(options)
     try {
         const request = await fetch(baseUrl + 'users/profile', options)
         if (request.ok) {
@@ -50,8 +50,35 @@ async function getUser(token) {
     } catch (error) {
         console.log(error)
     }
-
 }
+
+export async function getPosts(token) {
+    const options = {
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer ' + token
+        }
+    };
+
+    try {
+        const request = await fetch(baseUrl + 'posts', options)
+        console.log(request)
+        if (request.ok) {
+            const response = await request.json()
+            // console.log(response)
+            // setLocalStorage('user-profile', response)
+            return response
+        } else {
+            console.log("erro ao receber os posts cadastrados")
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
 
 export async function register(body) {
     const toast = document.querySelector('.tooltips')
@@ -78,5 +105,7 @@ export async function register(body) {
         console.error(error)
     }
 }
+
+
 
 /* https://img2.gratispng.com/20180327/ssq/kisspng-computer-icons-user-profile-avatar-profile-5ab9e3b05772c0.6947928615221318883582.jpg */

@@ -14,14 +14,14 @@
     margin-right: 12px;
 }
 
-.user-profile > img{
+.user-profile>img {
     width: 41px;
     height: 41px;
     border-radius: 50%;
     /* border: 1px solid red; */
 }
 
-.user-profile > img:hover{
+.user-profile>img:hover {
     cursor: pointer;
 }
 
@@ -45,7 +45,7 @@
     /* display: none; */
 }
 
-.hidden-profile{
+.hidden-profile {
     display: none;
     border: 1px solid red;
 }
@@ -97,6 +97,12 @@ header {
     gap: 15px;
 }
 
+.list-feed img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
 .list-feed div>span:nth-child(3) {
     color: var(--gray6);
     /* background-color: red; */
@@ -117,7 +123,19 @@ header {
 
 .content p {
     color: var(--gray3);
+
 }
+
+/* .content p {
+    color: var(--gray3);
+    height: 50px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 4em;
+    line-height: 1.5em;
+} */
 
 .content a {
     /* background-color: red;
