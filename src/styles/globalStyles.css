@@ -38,12 +38,11 @@
   --radius-1: 4px;
   --radius-2: 8px;
   --radius-3: 50%;
-
 }
 
-body{
-color: var(--gray1);
-background-color: var(--gray9);
+body {
+  color: var(--gray1);
+  background-color: var(--gray9);
 }
 
 .font1-600 {

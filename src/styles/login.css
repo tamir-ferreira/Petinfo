@@ -7,7 +7,6 @@ main {
 
 .login-title {
     width: 391px;
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     gap: 24px;

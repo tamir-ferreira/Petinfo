@@ -2,7 +2,6 @@
     padding: 21px 32px;
     display: flex;
     flex-direction: column;
-    /* border: 1px solid red; */
     position: fixed;
     right: 16px;
     bottom: 28px;
@@ -10,16 +9,11 @@
     border-radius: var(--radius-1);
     background-color: var(--gray9);
     box-shadow: 0px 4px 30px -12px rgba(0, 0, 0, 0.1);
-    display: none;
+    transform: translateX(500px)
 }
 
 .show-toast {
-    animation: toast 0.8s ease;
-    display: flex;
-}
-
-.success {
-    animation: toast 0.8s ease;
+    animation: toast 8s ease;
     display: flex;
 }
 
@@ -40,12 +34,21 @@
     color: var(--brand1);
 }
 
+
 @keyframes toast {
     0% {
         transform: translateX(450px);
     }
 
-    100% {
+    10% {
         transform: translateX(0);
+    }
+
+    90% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(450px);
     }
 }

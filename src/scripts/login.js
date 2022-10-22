@@ -5,6 +5,8 @@ const inputEmail = document.querySelector('#email')
 const inputPassword = document.querySelector('#password')
 const spanAlert = document.querySelector('#span-alert')
 
+
+/* ----------------- EVENTO DE LOGIN ------------------ */
 const eventLogin = () => {
     const form = document.querySelector("form")
     const elements = [...form.elements]
@@ -13,7 +15,9 @@ const eventLogin = () => {
         e.onkeyup = () => {
             const filtered = elements.filter(e => e.tagName == "INPUT")
             const verify = filtered.every(e => e.value != '')
-            // console.log(verify)
+            inputPassword.classList.remove('alert-form')
+            inputEmail.classList.remove('alert-form')
+
             if (verify) {
                 btnLogin.removeAttribute('disabled')
                 btnLogin.classList.remove('btn-disabled')
@@ -41,22 +45,21 @@ const eventLogin = () => {
         })
 
         const response = await login(body)
-        console.log(response)
-        if (response.indexOf("incorret")) {
+
+        if (response.indexOf("incorret") != -1) {
             btnLogin.style.display = 'block';
             btnSpinner.style.display = 'none';
- 
+
             btnLogin.setAttribute('disabled', true)
             btnLogin.classList.remove('btn-brand')
             btnLogin.classList.add('btn-disabled')
-            
+
             spanAlert.classList.add('alert-span')
             spanAlert.textContent = response;
 
-            if (response.indexOf("email")) inputEmail.classList.add('alert-form')
-            else inputPassword.classList.add('alert-form')
+            if (response.indexOf("senha") != -1) inputPassword.classList.add('alert-form')
+            else inputEmail.classList.add('alert-form')
         }
     })
 }
-
 eventLogin()

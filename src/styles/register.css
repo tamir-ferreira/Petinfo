@@ -42,7 +42,6 @@ main {
 
 .register-title {
     width: 320px;
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     gap: 24px;

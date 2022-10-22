@@ -16,7 +16,6 @@ textarea{
     padding: 16px 16px;
 }
 
-
 input:focus,
 textarea:focus {
     background-color: var(--gray9);

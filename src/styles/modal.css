@@ -1,0 +1,90 @@
+.modal-container {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var();
+    position: fixed;
+    top: 0;
+    align-items: flex-start;
+    padding-top: 50px;
+    background-color: var(--opacity);
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    background-color: var(--gray9);
+    border-radius: 8px;
+    padding: 30px 24px;
+}
+
+.modal header {
+    padding-bottom: 47px;
+}
+
+.modal-rd {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    background-color: var(--gray9);
+    border-radius: 8px;
+    padding: 30px 24px;
+}
+
+.modal-rd img {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-3);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header>div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal div>span:nth-child(3) {
+    color: var(--gray6);
+}
+
+.modal div>span:nth-child(4) {
+    color: var(--gray4);
+}
+
+.edit-title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 20px;
+
+}
+
+.edit-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 44px;
+}
+
+.edit-content-container p {
+    color: var(--gray3);
+}
+
+.edit-buttons {
+    display: flex;
+    justify-content: right;
+    gap: 16px;
+}
+
+.remove-buttons {
+    display: flex;
+    gap: 16px;
+}

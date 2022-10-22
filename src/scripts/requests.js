@@ -2,6 +2,7 @@ import { setLocalStorage } from "./localStorage.js";
 
 const baseUrl = "http://localhost:3333/"
 
+/* ------------------ REQUISIÇÃO DE LOGIN DO USUÁRIO ----------------- */
 export async function login(body) {
     const options = {
         method: 'POST',
@@ -15,12 +16,12 @@ export async function login(body) {
             const response = await request.json()
 
             setLocalStorage('user-token', response.token)
-            getUser(response.token)
-            // console.log(response.token)
+            await getUser(response.token)
+
             window.location.replace("./src/pages/home.html")
         } else {
             const error = await request.json()
-            // console.log(error.message)
+
             return error.message
         }
 
@@ -30,6 +31,8 @@ export async function login(body) {
     }
 }
 
+
+/* ------------------ REQUISIÇÃO DOS DADOS DO USUÁRIO LOGADO ----------------- */
 async function getUser(token) {
     const options = {
         method: 'GET',
@@ -37,12 +40,12 @@ async function getUser(token) {
             Authorization: 'Bearer ' + token
         }
     };
-    // console.log(options)
+
     try {
         const request = await fetch(baseUrl + 'users/profile', options)
         if (request.ok) {
             const response = await request.json()
-            // console.log(response)
+
             setLocalStorage('user-profile', response)
         } else {
             console.log("erro ao receber o cadastro do usuário")
@@ -53,6 +56,8 @@ async function getUser(token) {
     }
 }
 
+
+/* ------------------ REQUISIÇÃO DAS POSTAGENS CADASTRADAS ----------------- */
 export async function getPosts(token) {
     const options = {
         method: 'GET',
@@ -63,11 +68,10 @@ export async function getPosts(token) {
 
     try {
         const request = await fetch(baseUrl + 'posts', options)
-        console.log(request)
+
         if (request.ok) {
             const response = await request.json()
-            // console.log(response)
-            // setLocalStorage('user-profile', response)
+
             return response
         } else {
             console.log("erro ao receber os posts cadastrados")
@@ -79,10 +83,8 @@ export async function getPosts(token) {
 }
 
 
-
-
+/* ------------------ REQUISIÇÃO DE CADASTRO DE NOVO USUÁRIO ----------------- */
 export async function register(body) {
-    const toast = document.querySelector('.tooltips')
     const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -91,15 +93,13 @@ export async function register(body) {
 
     try {
         const request = await fetch(baseUrl + "users/create", options)
+        const response = await request.json()
         if (request.ok) {
-            const response = await request.json()
-            toast.classList.add('show-toast')
-            setTimeout(() => {
-                window.location.replace("../../index.html")
-            }, 5000)
-            // console.log(request)
+
+            return true
         } else {
-            console.log("erro de cadastro")
+            console.log(response.message)
+            return false
         }
 
     } catch (error) {
@@ -108,5 +108,121 @@ export async function register(body) {
 }
 
 
+/* ------------------ REQUISIÇÃO DE CADASTRO DE NOVA POSTAGEM ----------------- */
+export async function newPost(body, token) {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+        },
+        body: JSON.stringify(body)
+    };
 
-/* https://img2.gratispng.com/20180327/ssq/kisspng-computer-icons-user-profile-avatar-profile-5ab9e3b05772c0.6947928615221318883582.jpg */
+    try {
+        const request = await fetch(baseUrl + "posts/create", options)
+        if (request.ok) {
+            const response = await request.json()
+
+            return true
+        } else {
+            const error = await request.json()
+            console.log(error.message)
+
+            return false
+        }
+
+    } catch (error) {
+        console.error(error)
+        return false
+    }
+}
+
+
+/* ------------------ REQUISIÇÃO DE ALTERAÇÃO DE DADOS DE POSTAGENS ----------------- */
+export async function updatePost(body, token, id) {
+    const options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+        },
+        body: JSON.stringify(body)
+    };
+    console.log(body)
+
+    try {
+        const request = await fetch(baseUrl + "posts/" + id, options)
+        if (request.ok) {
+            const response = await request.json()
+
+            return true
+        } else {
+            const error = await request.json()
+            console.log(error.message)
+
+            return false
+        }
+
+    } catch (error) {
+        console.error(error)
+        return false
+    }
+}
+
+/* ----------------- REQUISIÇÃO PARA DELETAR POSTAGEM -------------- */
+export async function deletePost(token, id) {
+    const option = {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'Application/json',
+            Authorization: 'Bearer ' + token
+        }
+    }
+
+    try {
+        const request = await fetch(baseUrl + "posts/" + id, option)
+        const response = await request.json()
+        if (request.ok) {
+
+            return true
+        } else {
+            console.erroe(response.message)
+            return false
+        }
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
+/* ------------------ REQUISIÇÃO DE ALTERAÇÃO DE DADOS DO USUÁRIO ----------------- */
+export async function updateUser(token) {
+    const options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+        },
+        body: '{"avatar":"../images/profile-default.jpg"}'
+
+    };
+
+    try {
+        const request = await fetch(baseUrl + "users/profile", options)
+        if (request.ok) {
+            const response = await request.json()
+
+            return response
+        } else {
+            const error = await request.json()
+            console.log(error.message)
+            return error.message
+        }
+
+    } catch (error) {
+        console.error(error)
+        return false
+    }
+}

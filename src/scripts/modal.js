@@ -1,11 +1,11 @@
 import { formatDate, insertNewPost } from "./home.js"
 
 const listModals = document.querySelector('.list-modals')
-// let btnClose
+
 
 /* ------------------ RENDERIZAR MODAL DE LEITURA DE POST --------------- */
 export function renderModalRead(post) {
-    // console.log(post)
+
     const formatedDate = formatDate(post.createdAt)
     listModals.innerHTML = ''
 
@@ -33,6 +33,7 @@ export function renderModalRead(post) {
     const btnClose = document.querySelector('.btn-close')
     btnClose.onclick = (event) => event.target.closest('article').remove()
 }
+
 
 /* ------------------ RENDERIZAR MODAL DE INCLUSÃO DE POST --------------- */
 export function renderModalCreate() {
@@ -68,4 +69,71 @@ export function renderModalCreate() {
     btnCancel.onclick = (event) => event.target.closest('form').remove()
 
     insertNewPost()
+}
+
+
+/* ------------------ RENDERIZAR MODAL DE EDIÇÂO DE POST --------------- */
+export function renderModalEdit() {
+    listModals.innerHTML = ''
+
+    listModals.insertAdjacentHTML('afterbegin',
+        `<form class="modal-container">
+            <div class="modal">
+                <header>
+                    <h3 class="font3-500">Edição</h3>
+                    <button type="button" class="btn-gray-small btn-close">x</button>
+                </header>
+                <div class="edit-title-container">
+                    <label class="font4-500" for="title">Título do post</label>
+                    <input type="text" id="title">
+                </div>
+                <div class="edit-content-container">
+                    <label class="font4-500" for="content">Conteúdo do post</label>
+                    <textarea name="" id="content"></textarea>
+                </div>
+                <div class="edit-buttons">
+                    <button type="button" id="btn-cancel" class="btn-gray">Cancelar</button>
+                    <button id="btn-save" class="btn-brand">Salva Alterações</button>
+                </div>
+            </div>
+        </form> 
+     `
+    )
+
+    const btnClose = document.querySelector('.btn-close')
+    const btnCancel = document.querySelector('#btn-cancel')
+    btnClose.onclick = (event) => event.target.closest('form').remove()
+    btnCancel.onclick = (event) => event.target.closest('form').remove()
+}
+
+
+/* ------------------ RENDERIZAR MODAL DE DELEÇÂO DE POST --------------- */
+export function renderModalDelete() {
+    listModals.innerHTML = ''
+
+    listModals.insertAdjacentHTML('afterbegin',
+        `<form class="modal-container">
+            <div class="modal">
+                <header>
+                    <h3 class="font3-500">Confirmação de exclusão</h3>
+                    <button type="button" class="btn-gray-small btn-close">x</button>
+                </header>
+                <div class="edit-content-container">
+                    <h2 class="font2-500">Tem certeza que deseja excluir este post?</h2>
+                    <p class="font4-400">Essa ação não poderá ser desfeita, então pedimos que tenha cautela antes de
+                        concluir.</p>
+                </div>
+                <div class="remove-buttons">
+                    <button type="button" id="btn-cancel" class="btn-gray">Cancelar</button>
+                    <button id="btn-delete" class="btn-alert">Sim, excluir este post</button>
+                </div>
+            </div>
+        </form>
+     `
+    )
+
+    const btnClose = document.querySelector('.btn-close')
+    const btnCancel = document.querySelector('#btn-cancel')
+    btnClose.onclick = (event) => event.target.closest('form').remove()
+    btnCancel.onclick = (event) => event.target.closest('form').remove()
 } 
