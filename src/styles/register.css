@@ -17,6 +17,7 @@ main {
     width: 369px;
     border: 1px solid var(--border);
     padding: 44px 24px;
+    border-radius: var(--radius-1);
 }
 
 .register-form header {
